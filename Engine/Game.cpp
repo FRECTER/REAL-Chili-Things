@@ -28,13 +28,13 @@ Game::Game( MainWindow& wnd )
 	gfx( wnd ),
 	rng( rd() ),
 	xDist( 0,770 ),
-	yDist( 0,570 )
+	yDist( 0,570 ),
+	r(xDist(rng), yDist(rng))
 {
-	std::uniform_int_distribution<int> vDist(0, 1);
+	std::uniform_real_distribution<float> vDist(-2.5f, 2.5f);
 	for (int i = 0; i < poonum; i++) {
-		poos[i].Init(xDist(rng), yDist(rng), 2 * vDist(rng) - 1, 2 * vDist(rng) - 1);
+		poos[i].Init(xDist(rng), yDist(rng), vDist(rng), vDist(rng));
 	}
-	r.Init(xDist(rng), yDist(rng));
 }
 
 void Game::Go()

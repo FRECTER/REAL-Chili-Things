@@ -1,23 +1,22 @@
 #include "Rect.h"
 #include "Graphics.h"
 
-void Rect::Init(int inX, int inY) {
-	x = inX;
-	y = inY;
-}
-
 void Rect::Draw(Graphics & gfx) const {
-	for (int i = 0; i < width; i++) {
-		for (int j = 0; j < height; j++)
-			gfx.PutPixel(x + i, y + j, 255, redness, redness);
+	const int int_x = (int)x;
+	const int int_y = (int)y;
+	const int int_w = (int)width;
+	const int int_h = (int)height;
+	for (int i = 0; i < int_w; i++) {
+		for (int j = 0; j < int_h; j++)
+			gfx.PutPixel(int_x + i, int_y + j, 255, redness, redness);
 	}
 }
 
 void Rect::Check(Dude& dude) {
-	const int duderight = dude.GetX() + dude.GetWidth();
-	const int dudebottom = dude.GetY() + dude.GetHeight();
-	const int rectright = x + width;
-	const int rectbottom = y + height;
+	const float duderight = dude.GetX() + dude.GetWidth();
+	const float dudebottom = dude.GetY() + dude.GetHeight();
+	const float rectright = x + width;
+	const float rectbottom = y + height;
 
 	if (duderight >= x &&
 		dude.GetX() <= rectright &&
@@ -28,7 +27,7 @@ void Rect::Check(Dude& dude) {
 	}
 }
 
-void Rect::Update(int newX, int newY) {
+void Rect::Update(float newX, float newY) {
 	x = newX;
 	y = newY;
 	reached = false;
@@ -41,20 +40,20 @@ bool Rect::IsReached() const {
 void Rect::changeColor() {
 	if (redness == 255) {
 		lastcolor = redness;
-		redness--;
+		redness -= 5;
 	}
 	else if (redness == 0) {
 		lastcolor = redness;
-		redness++;
+		redness += 5;
 	}
 	else {
 		if (lastcolor < redness) {
 			lastcolor = redness;
-			redness++;
+			redness += 5;
 		}
 		else {
 			lastcolor = redness;
-			redness--;
+			redness -= 5;
 		}
 	}
 }
