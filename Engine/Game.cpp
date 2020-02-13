@@ -28442,5 +28442,3 @@ void Game::ComposeFrame()
 		}
 	}
 }
-
-// test
