@@ -26,6 +26,7 @@
 #include "Poo.h"
 #include "Dude.h"
 #include "Rect.h"
+#include "Circ.h"
 #include <random>
 
 class Game

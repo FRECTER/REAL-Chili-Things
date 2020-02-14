@@ -28426,6 +28426,7 @@ void Game::ComposeFrame()
 	if( !isStarted )
 	{
 		DrawTitleScreen( 325,211 );
+		test.DrawDisk(gfx);
 	}
 	else
 	{
