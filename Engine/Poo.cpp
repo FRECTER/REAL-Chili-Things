@@ -296,3 +296,8 @@ bool Poo::IsEaten() const
 {
 	return isEaten;
 }
+
+void Poo::IncreaseSpeed() {
+	vx += speedModifier;
+	vy += speedModifier;
+}

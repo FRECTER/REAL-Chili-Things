@@ -64,6 +64,8 @@ void Game::UpdateModel()
 		r.Check(dude);
 		if (r.IsReached()) {
 			dude.AddProgress();
+			for (int i = 0; i < poonum; i++)
+				poos[i].IncreaseSpeed();
 			r.Update(xDist(rng), yDist(rng));
 		}
 	}

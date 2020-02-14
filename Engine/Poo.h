@@ -11,11 +11,13 @@ public:
 	void ProcessConsumption( Dude& dude );
 	void Draw( Graphics& gfx ) const;
 	bool IsEaten() const;
+	void IncreaseSpeed();
 private:
 	float x;
 	float y;
 	float vx;
 	float vy;
+	static constexpr float speedModifier = 0.2f * 60.0f;
 	static constexpr float width = 24.0f;
 	static constexpr float height = 24.0f;
 	bool isEaten = false;
