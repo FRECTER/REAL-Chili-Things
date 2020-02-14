@@ -27,6 +27,7 @@
 #include "Dude.h"
 #include "Rect.h"
 #include "Circ.h"
+#include "FrameTimer.h"
 #include <random>
 
 class Game
@@ -54,6 +55,7 @@ private:
 	std::mt19937 rng;
 	std::uniform_real_distribution<float> xDist;
 	std::uniform_real_distribution<float> yDist;
+	FrameTimer ft;
 	Dude dude;
 	static constexpr int poonum = 10;
 	Poo poos[poonum];

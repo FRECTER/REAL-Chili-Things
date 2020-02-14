@@ -31,7 +31,7 @@ Game::Game( MainWindow& wnd )
 	yDist( 0,570 ),
 	r(xDist(rng), yDist(rng))
 {
-	std::uniform_real_distribution<float> vDist(-2.5f, 2.5f);
+	std::uniform_real_distribution<float> vDist(-2.5f * 60.0f, 2.5f * 60.0f);
 	for (int i = 0; i < poonum; i++) {
 		poos[i].Init(xDist(rng), yDist(rng), vDist(rng), vDist(rng));
 	}
@@ -47,13 +47,14 @@ void Game::Go()
 
 void Game::UpdateModel()
 {
+	const float dt = ft.Mark();
 	if( isStarted )
 	{
-		dude.Update( wnd.kbd );
+		dude.Update( wnd.kbd, dt );
 		dude.ClampToScreen();
 
 		for (int i = 0; i < poonum; i++) {
-			poos[i].Update();
+			poos[i].Update(dt);
 			poos[i].ProcessConsumption(dude);
 			if (poos[i].IsEaten())
 				isEnded = true;

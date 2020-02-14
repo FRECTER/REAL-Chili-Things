@@ -9,7 +9,7 @@ public:
 	void ClampToScreen();
 	void Draw( Graphics& gfx ) const;
 	void DrawProgress(Graphics& gfx) const;
-	void Update( const Keyboard& kbd );
+	void Update(const Keyboard& kbd, float dt);
 	float GetX() const;
 	float GetY() const;
 	float GetWidth() const;
@@ -20,7 +20,7 @@ private:
 	float x = 400.0f;
 	float y = 300.0f;
 	int progress = 0;
-	static constexpr float speed = 2.0f;
+	static constexpr float speed = 2.0f * 60.0f;
 	static constexpr float width = 20.0f;
 	static constexpr float height = 20.0f;
 };
