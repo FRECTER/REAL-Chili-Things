@@ -29,7 +29,7 @@ Game::Game(MainWindow& wnd)
 	rng(rd()),
 	xDist(0, 770),
 	yDist(0, 570),
-	r(Vec2(xDist(rng), yDist(rng))) // hi
+	r(Vec2(xDist(rng), yDist(rng)))
 {
 	std::uniform_real_distribution<float> vDist(-2.5f * 60.0f, 2.5f * 60.0f);
 	for (int i = 0; i < poonum; i++) {
