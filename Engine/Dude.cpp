@@ -398,6 +398,23 @@ void Dude::UpdateMouse(const Mouse& mouse, float dt) {
 	}
 }
 
+void Dude::Boost(const Keyboard& kbd) {
+	if (progress > 0) {
+		if (kbd.KeyIsPressed(VK_SPACE)) {
+			boostCount++;
+			speed = 2.0f * 60.0f * 1.5f;
+			if (boostCount >= boostConsume) {
+				progress--;
+				boostCount = 0;
+			}
+		}
+		else {
+			boostCount = 0;
+			speed = 2.0f * 60.0f;
+		}
+	}
+}
+
 Vec2 Dude::GetPos() const {
 	return pos;
 }
