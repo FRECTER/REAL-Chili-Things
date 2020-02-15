@@ -33,7 +33,9 @@ Game::Game(MainWindow& wnd)
 {
 	std::uniform_real_distribution<float> vDist(-2.5f * 60.0f, 2.5f * 60.0f);
 	for (int i = 0; i < poonum; i++) {
-		poos[i].Init(Vec2(xDist(rng), yDist(rng)), Vec2(vDist(rng), vDist(rng)));
+		do {
+			poos[i].Init(Vec2(xDist(rng), yDist(rng)), Vec2(vDist(rng), vDist(rng)));
+		} while ((poos[i].GetPos() - dude.GetPos()).Norm() <= 50);
 	}
 }
 
@@ -52,7 +54,7 @@ void Game::UpdateModel()
 	{
 		/* dude.Update( wnd.kbd, dt ); */
 
-		dude.UpdateMouse(wnd.mouse, dt);
+		dude.UpdateMouse(wnd.mouse, dt); // mouse controls dude
 		dude.ClampToScreen();
 
 		for (int i = 0; i < poonum; i++) {

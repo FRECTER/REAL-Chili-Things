@@ -58,6 +58,7 @@ private:
 	FrameTimer ft;
 	Dude dude;
 	static constexpr int poonum = 10;
+	static constexpr int minPooSpawnDist = 100;
 	Poo poos[poonum];
 	Rect r;
 	bool isStarted = false;

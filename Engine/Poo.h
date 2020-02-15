@@ -13,6 +13,7 @@ public:
 	void Draw( Graphics& gfx ) const;
 	bool IsEaten() const;
 	void IncreaseSpeed();
+	Vec2 GetPos() const;
 private:
 	Vec2 pos;
 	Vec2 vel;
