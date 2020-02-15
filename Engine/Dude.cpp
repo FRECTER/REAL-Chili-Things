@@ -391,6 +391,13 @@ void Dude::Update( const Keyboard & kbd, float dt )
 	}
 }
 
+void Dude::UpdateMouse(const Mouse& mouse, float dt) {
+	if (mouse.LeftIsPressed()) {
+		int click_x = mouse.GetPosX(), click_y = mouse.GetPosY();
+		pos += (Vec2((float)click_x, (float)click_y) - pos).GetNormalized() * speed * dt;
+	}
+}
+
 Vec2 Dude::GetPos() const {
 	return pos;
 }

@@ -50,7 +50,9 @@ void Game::UpdateModel()
 	const float dt = ft.Mark();
 	if( isStarted )
 	{
-		dude.Update( wnd.kbd, dt );
+		/* dude.Update( wnd.kbd, dt ); */
+
+		dude.UpdateMouse(wnd.mouse, dt);
 		dude.ClampToScreen();
 
 		for (int i = 0; i < poonum; i++) {
