@@ -2,8 +2,8 @@
 #include "Graphics.h"
 
 void Rect::Draw(Graphics & gfx) const {
-	const int int_x = (int)x;
-	const int int_y = (int)y;
+	const int int_x = (int)pos.x;
+	const int int_y = (int)pos.y;
 	const int int_w = (int)width;
 	const int int_h = (int)height;
 	for (int i = 0; i < int_w; i++) {
@@ -13,23 +13,22 @@ void Rect::Draw(Graphics & gfx) const {
 }
 
 void Rect::Check(Dude& dude) {
-	const float duderight = dude.GetX() + dude.GetWidth();
-	const float dudebottom = dude.GetY() + dude.GetHeight();
-	const float rectright = x + width;
-	const float rectbottom = y + height;
+	const float duderight = dude.GetPos().x + dude.GetWidth();
+	const float dudebottom = dude.GetPos().y + dude.GetHeight();
+	const float rectright = pos.x + width;
+	const float rectbottom = pos.y + height;
 
-	if (duderight >= x &&
-		dude.GetX() <= rectright &&
-		dudebottom >= y &&
-		dude.GetY() <= rectbottom)
+	if (duderight >= pos.x &&
+		dude.GetPos().x <= rectright &&
+		dudebottom >= pos.y &&
+		dude.GetPos().y <= rectbottom)
 	{
 		reached = true;
 	}
 }
 
-void Rect::Update(float newX, float newY) {
-	x = newX;
-	y = newY;
+void Rect::Update(const Vec2& new_pos) {
+	pos = new_pos;
 	reached = false;
 }
 

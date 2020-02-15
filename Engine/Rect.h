@@ -5,19 +5,16 @@
 
 class Rect {
 public:
-	Rect(float in_x, float in_y)
-		:
-		x(in_x),
-		y(in_y) {
-
+	Rect(const Vec2& in_pos) {
+		pos = in_pos;
 	}
 	void Draw(Graphics& gfx) const;
-	void Update(float newX, float newY);
+	void Update(const Vec2& new_pos);
 	void Check(Dude& dude);
 	bool IsReached() const;
 	void changeColor();
 private:
-	float x, y;
+	Vec2 pos;
 	static constexpr float width = 20;
 	static constexpr float height = 20;
 	int redness = 255;

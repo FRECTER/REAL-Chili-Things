@@ -22,18 +22,18 @@
 #include "Game.h"
 #include <random>
 
-Game::Game( MainWindow& wnd )
+Game::Game(MainWindow& wnd)
 	:
-	wnd( wnd ),
-	gfx( wnd ),
-	rng( rd() ),
-	xDist( 0,770 ),
-	yDist( 0,570 ),
-	r(xDist(rng), yDist(rng))
+	wnd(wnd),
+	gfx(wnd),
+	rng(rd()),
+	xDist(0, 770),
+	yDist(0, 570),
+	r(Vec2(xDist(rng), yDist(rng)))
 {
 	std::uniform_real_distribution<float> vDist(-2.5f * 60.0f, 2.5f * 60.0f);
 	for (int i = 0; i < poonum; i++) {
-		poos[i].Init(xDist(rng), yDist(rng), vDist(rng), vDist(rng));
+		poos[i].Init(Vec2(xDist(rng), yDist(rng)), Vec2(vDist(rng), vDist(rng)));
 	}
 }
 
@@ -66,7 +66,7 @@ void Game::UpdateModel()
 			dude.AddProgress();
 			for (int i = 0; i < poonum; i++)
 				poos[i].IncreaseSpeed();
-			r.Update(xDist(rng), yDist(rng));
+			r.Update(Vec2(xDist(rng), yDist(rng)));
 		}
 	}
 	else
