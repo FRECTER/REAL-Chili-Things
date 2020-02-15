@@ -373,22 +373,24 @@ void Dude::DrawProgress(Graphics& gfx) const {
 
 void Dude::Update( const Keyboard & kbd, float dt )
 {
+	Vec2 d(0.0f, 0.0f);
 	if( kbd.KeyIsPressed( VK_RIGHT ) )
 	{
-		pos.x += speed * dt;
+		d.x += 1.0f;
 	}
 	if( kbd.KeyIsPressed( VK_LEFT ) )
 	{
-		pos.x -= speed * dt;
+		d.x -= 1.0f;
 	}
 	if( kbd.KeyIsPressed( VK_DOWN ) )
 	{
-		pos.y += speed * dt;
+		d.y += 1.0f;
 	}
 	if( kbd.KeyIsPressed( VK_UP ) )
 	{
-		pos.y -= speed * dt;
+		d.y -= 1.0f;
 	}
+	pos += d.GetNormalized() * speed * dt;
 }
 
 void Dude::UpdateMouse(const Mouse& mouse, float dt) {
