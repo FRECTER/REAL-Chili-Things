@@ -297,3 +297,7 @@ bool Poo::IsEaten() const
 void Poo::IncreaseSpeed() {
 	vel += Vec2(speedModifier, speedModifier);
 }
+
+Vec2 Poo::GetPos() const {
+	return pos;
+}
